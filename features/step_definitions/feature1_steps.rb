@@ -11,48 +11,41 @@ end
 Then (/^I should see the Dominos Location Search page$/) do
     expect(page).to have_selector(:id, 'locationsSearchPage')
 end
-def fill_out_location
+Then(/^I fill out address information$/)do
     
-    select('Business', from: 'Address_Type_Select')
-    fill_in('Street', with: '130 S. Meridian')
-    fill_in('City', with: 'Indianapolis')
-    select('IN', from: 'Region')
+    fill_in('Street', :with => '130 S. Meridian')
+    fill_in('City', :with => 'Indianapolis')
+    select('IN', :from => 'Region')
     fill_in('Postal_Code', :with => '46225')
-end
-Then(/^I select "(.*?)" from address type drop down$/) do |arg1|
-    # express the regexp above with the code you wish you had
-end
-
-Then(/^I enter “(\d+) S\. Meridian” in the street address field$/) do |arg1|
-    # express the regexp above with the code you wish you had
-end
-
-Then(/^I enter “Indianapolis” in the city field$/) do
-    # express the regexp above with the code you wish you had
-end
-
-Then(/^I select “IN from state drop down$/) do
-    # express the regexp above with the code you wish you had
-end
-
-def continue_button
     find_button('Continue').click
 end
-Then(/^I click the “Continue” button$/) do
-    # express the regexp above with the code you wish you had
-end
+
 Then(/^I should see “(\d+) S\. Meridian” selected in the order settings$/) do |arg1|
     # express the regexp above with the code you wish you had
 end
-Then(/^I expand “Specialty Pizza”$/) do
-    # express the regexp above with the code you wish you had
+Then(/^I click “Specialty Pizza”$/) do
+    find(:xpath, '//*[@id="entreesPage"]/div[5]/a/div[2]/h2').click
 end
 Then(/^I click “Order” for Chicken & Bacon Carbonara$/) do
-    # express the regexp above with the code you wish you had
+    find(:xpath, '//*[@id="categoryPage2"]/section[1]/div/div[1]/a').click
 end
 Then(/^I click “Add to Order”$/) do
-    # express the regexp above with the code you wish you had
+    find(:xpath, '//*[@id="builderDefaultPage"]/div/div[2]/form/div[3]/button').click
 end
 Then(/^I click “Checkout” button$/) do
-    # express the regexp above with the code you wish you had
+    find(:xpath, '//*[@id="orderSummaryInColumn"]/div[2]/div[1]/a/span').click
+end
+Then(/^I click Add More Items$/) do
+    find(:xpath, '//*[@id="backToMenu"]').click
+end
+Then(/^I click “Pasta”$/) do
+    find(:xpath, '//*[@id="entreesPage"]/div[6]/a/div[2]/h2').click
+end
+Then(/^I click “Order” for Pasta Primavera$/) do
+    find(:xpath, '//*[@id="categoryPage2"]/section/div/div[4]/a').click
+end
+Then(/^I check my order total$/) do
+    new_total=find(:xpath,"//td[@class='finalizedTotal js-total']").native.text
+    expect(new_total).to eq("$18.51")
+    print new_total
 end

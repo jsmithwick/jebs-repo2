@@ -11,18 +11,19 @@ Scenario: Location Search for Dominos Pizza
   Given I visit the Dominos home page
   When I click the "Order Online" tab
   Then I should see the Dominos Location Search page
-@location
-Scenario: Complete Location Search
-  And I select "Business" from address type drop down
-  And I enter “130 S. Meridian” in the street address field
-  And I enter “Indianapolis” in the city field
-  And I select “IN from state drop down
-  And I click the “Continue” button
+  Then I fill out address information
   Then I should see “130 S. Meridian” selected in the order settings
-@orderselection
-Scenario: Select Order Items
-  Then I expand “Specialty Pizza”
+  Then I click “Specialty Pizza”
   Then I click “Order” for Chicken & Bacon Carbonara
   Then I click “Add to Order”
   Then I click “Checkout” button
+  Then I click Add More Items
+  Then I click “Pasta”
+  Then I click “Order” for Pasta Primavera
+  Then I click “Add to Order”
+  Then I click “Checkout” button
+  Then I check my order total
+
+
+
 
