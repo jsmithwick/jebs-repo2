@@ -48,4 +48,5 @@ Then(/^I check my order total$/) do
     new_total=find(:xpath,"//td[@class='finalizedTotal js-total']").native.text
     expect(new_total).to eq("$18.51")
     print new_total
+    save_screenshot('screenshot.png')
 end
